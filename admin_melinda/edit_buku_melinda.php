@@ -12,6 +12,7 @@ if (isset($_POST['update_melinda'])) {
         pengarang_melinda='$_POST[pengarang_melinda]',
         penerbit_melinda='$_POST[penerbit_melinda]',
         tahun_terbit_melinda='$_POST[tahun_terbit_melinda]',
+        kategori_melinda='$_POST[kategori_melinda]',
         stok_melinda='$_POST[stok_melinda]'
         WHERE id_buku_melinda='$id_melinda'
     ");
@@ -31,8 +32,32 @@ if (isset($_POST['update_melinda'])) {
     Penerbit <br>
     <input type="text" name="penerbit_melinda" value="<?= $data_melinda['penerbit_melinda']; ?>"><br><br>
 
-    Tahun <br>
+    Tahun Terbit<br>
     <input type="number" name="tahun_terbit_melinda" value="<?= $data_melinda['tahun_terbit_melinda']; ?>"><br><br>
+
+    Kategori Buku <br>
+    <select name="kategori_buku_melinda" required>
+        <?php
+        $kategori_melinda = [
+            "Novel",
+            "Komik",
+            "Dongeng",
+            "Buku Paket",
+            "Biografi",
+            "Majalah",
+            "Karya Ilmiah",
+            "Buku Digital",
+            "Fotografi",
+            "Cergam"
+        ];
+
+        foreach ($kategori_melinda as $k) {
+            $selected = ($data_melinda['kategori_buku_melinda'] == $k) ? "selected" : "";
+            echo "<option value='$k' $selected>$k</option>";
+        }
+        ?>
+    </select>
+    <br><br>
 
     Stok <br>
     <input type="number" name="stok_melinda" value="<?= $data_melinda['stok_melinda']; ?>"><br><br>

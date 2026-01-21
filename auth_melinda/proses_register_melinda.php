@@ -4,7 +4,9 @@ include "../config_melinda/koneksi_melinda.php";
 $username_melinda      = $_POST['username_melinda'];
 $password_melinda      = md5($_POST['password_melinda']);
 $nis_melinda           = $_POST['nis_melinda'];
+$nama_lengkap_melinda  = $_POST['nama_lengkap_melinda'];
 $kelas_melinda         = $_POST['kelas_melinda'];
+$jurusan_melinda         = $_POST['jurusan_melinda'];
 $role_melinda          = "user";
 
 // cek username
@@ -28,9 +30,9 @@ mysqli_query($koneksi_melinda,
 // simpan ke tabel anggota
 mysqli_query($koneksi_melinda,
     "INSERT INTO anggota_melinda 
-    (nis_melinda,nama_anggota_melinda,kelas_melinda)
+    (nis_melinda,nama_anggota_melinda,kelas_melinda,jurusan_melinda)
     VALUES
-    ('$nis_melinda','$nama_lengkap_melinda','$kelas_melinda')"
+    ('$nis_melinda','$nama_lengkap_melinda','$kelas_melinda','$jurusan_melinda')"
 );
 
 echo "<script>alert('Registrasi berhasil, silakan login');window.location='login_melinda.php';</script>";

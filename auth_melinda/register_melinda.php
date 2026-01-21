@@ -23,6 +23,9 @@
     <label>Kelas</label><br>
     <input type="text" name="kelas_melinda" required><br><br>
 
+    <label>Jurusan</label><br>
+    <input type="text" name="Jurusan_melinda" required><br><br>
+
     <button type="submit">Daftar</button>
 </form>
 

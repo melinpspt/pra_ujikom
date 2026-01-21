@@ -13,13 +13,12 @@ $query_melinda = mysqli_query(
 );
 
 $data_melinda = mysqli_fetch_assoc($query_melinda);
-$cek_melinda  = mysqli_num_rows($query_melinda);
+$cek_melinda = mysqli_num_rows($query_melinda);
 
 if ($cek_melinda > 0) {
-
-    $_SESSION['id_user_melinda']     = $data_melinda['id_user_melinda'];
-    $_SESSION['username_melinda']    = $data_melinda['username_melinda'];
-    $_SESSION['role_melinda']        = $data_melinda['role_melinda'];
+    $_SESSION['id_user_melinda'] = $data_melinda['id_user_melinda'];
+    $_SESSION['username_melinda'] = $data_melinda['username_melinda'];
+    $_SESSION['role_melinda'] = $data_melinda['role_melinda'];
 
     if ($data_melinda['role_melinda'] == 'admin') {
         header("location:../admin_melinda/dashboard_admin_melinda.php");
