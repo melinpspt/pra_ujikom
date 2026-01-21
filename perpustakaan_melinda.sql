@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2026 at 07:12 AM
+-- Generation Time: Jan 21, 2026 at 08:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,7 +41,8 @@ CREATE TABLE `anggota_melinda` (
 --
 
 INSERT INTO `anggota_melinda` (`id_anggota_melinda`, `id_user_melinda`, `nis_melinda`, `nama_anggota_melinda`, `kelas_melinda`, `jurusan_melinda`) VALUES
-(1, 1, '102306419', 'melinda puspita', '12', 'rpl');
+(1, 1, '102306419', 'melinda puspita', '10', 'rpl'),
+(4, 5, '102306422', 'siswi cewe', '12', 'mekatronika');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,7 @@ CREATE TABLE `buku_melinda` (
 
 INSERT INTO `buku_melinda` (`id_buku_melinda`, `judul_buku_melinda`, `pengarang_melinda`, `penerbit_melinda`, `tahun_terbit_melinda`, `kategori_buku_melinda`, `stok_melinda`) VALUES
 (2, 'tutorial php', 'gtw', 'gtw', '2005', 'Novel', 124),
-(4, 'one piece', 'gtw', 'gtw', '2006', 'Komik', 246);
+(4, 'one piece', 'gtw', 'gtw', '2006', 'Komik', 244);
 
 -- --------------------------------------------------------
 
@@ -87,8 +88,14 @@ CREATE TABLE `peminjaman_melinda` (
 --
 
 INSERT INTO `peminjaman_melinda` (`id_peminjaman_melinda`, `id_buku_melinda`, `tanggal_pinjam_melinda`, `tanggal_kembali_melinda`, `status_melinda`, `id_anggota_melinda`) VALUES
-(5, 2, '2026-01-21', NULL, 'dipinjam', 1),
-(6, 2, '2026-01-21', '2026-01-21', 'dikembalikan', 1);
+(5, 2, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
+(6, 2, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
+(7, 2, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
+(8, 4, '2026-01-21', NULL, 'dipinjam', 1),
+(9, 4, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
+(10, 2, '2026-01-21', NULL, 'dipinjam', 1),
+(11, 4, '2026-01-21', NULL, 'dipinjam', 4),
+(12, 2, '2026-01-22', '0000-00-00', '', 4);
 
 -- --------------------------------------------------------
 
@@ -109,7 +116,8 @@ CREATE TABLE `user_melinda` (
 
 INSERT INTO `user_melinda` (`id_user_melinda`, `username_melinda`, `password_melinda`, `role_melinda`) VALUES
 (1, 'mel', '202cb962ac59075b964b07152d234b70', 'user'),
-(2, 'min', '202cb962ac59075b964b07152d234b70', 'admin');
+(2, 'min', '202cb962ac59075b964b07152d234b70', 'admin'),
+(5, 'siswi', 'b44f4e457859949b3c4b9c5b0405b6a8', 'user');
 
 --
 -- Indexes for dumped tables
@@ -150,7 +158,7 @@ ALTER TABLE `user_melinda`
 -- AUTO_INCREMENT for table `anggota_melinda`
 --
 ALTER TABLE `anggota_melinda`
-  MODIFY `id_anggota_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_anggota_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `buku_melinda`
@@ -162,13 +170,13 @@ ALTER TABLE `buku_melinda`
 -- AUTO_INCREMENT for table `peminjaman_melinda`
 --
 ALTER TABLE `peminjaman_melinda`
-  MODIFY `id_peminjaman_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_peminjaman_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_melinda`
 --
 ALTER TABLE `user_melinda`
-  MODIFY `id_user_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
