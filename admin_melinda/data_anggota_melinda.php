@@ -10,9 +10,11 @@ include "../config_melinda/koneksi_melinda.php";
     <title>Document</title>
 </head>
 
-<body>
-    
+<body>  
     <h2>Data Anggota</h2>
+
+    <a href="tambah_anggota_melinda.php">+ Tambah Anggota</a>
+    <br><br>
 
     <table border="1" cellpadding="5">
         <tr>
@@ -25,15 +27,15 @@ include "../config_melinda/koneksi_melinda.php";
 
         <?php
         $no_melinda = 1;
-        $query_melinda = mysqli_query($koneksi_melinda, "SELECT * FROM anggota_melinda");
+        $query_melinda = mysqli_query($koneksi_melinda, "SELECT * FROM user_melinda");
         while ($data_melinda = mysqli_fetch_assoc($query_melinda)) {
             ?>
             <tr>
                 <td><?= $no_melinda++; ?></td>
-                <td><?= $data_melinda['nis_melinda']; ?></td>
-                <td><?= $data_melinda['nama_anggota_melinda']; ?></td>
+                <td><?= $data_melinda['username_melinda']; ?></td>
+                <td><?= $data_melinda['password_melinda']; ?></td>
+                <td><?= $data_melinda['nama_lengkap_melinda']; ?></td>
                 <td><?= $data_melinda['kelas_melinda']; ?></td>
-                <td><?= $data_melinda['jurusan_melinda']; ?></td>
             </tr>
         <?php } ?>
     </table>

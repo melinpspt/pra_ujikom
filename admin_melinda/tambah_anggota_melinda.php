@@ -2,16 +2,23 @@
 include "../config_melinda/koneksi_melinda.php";
 
 if (isset($_POST['simpan_melinda'])) {
-    mysqli_query($koneksi_melinda, "INSERT INTO anggota_melinda VALUES (
-        '',
-        '$_POST[id_anggota_melinda]',
-        '$_POST[nis_melinda]',
-        '$_POST[nama_anggota_melinda]',
-        '$_POST[kelas_melinda]',
-        '$_POST[jurusan_melinda]'
-    )");
+
+    mysqli_query($koneksi_melinda, "
+        INSERT INTO anggota_melinda
+        (nis_melinda, nama_anggota_melinda, kelas_melinda, jurusan_melinda, id_user_melinda)
+        VALUES
+        (
+            '$_POST[nis_melinda]',
+            '$_POST[nama_anggota_melinda]',
+            '$_POST[kelas_melinda]',
+            '$_POST[jurusan_melinda]',
+            '$_POST[id_user_melinda]'
+        )
+    ");
+
     header("location:data_anggota_melinda.php");
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -22,26 +29,39 @@ if (isset($_POST['simpan_melinda'])) {
     <title>Document</title>
 </head>
 <body>
-    <h2>Tambah anggota</h2>
-    <a href="tambah_anggota_melinda.php">+ Tambah Anggota</a>
+    <h2>Tambah Anggota</h2>
+    <form method="POST">
+    NIS <br>
+    <input type="text" name="nis_melinda" required><br><br>
+
+    Nama Anggota <br>
+    <input type="text" name="nama_anggota_melinda" required><br><br>
+
+    Kelas <br>
+    <input type="text" name="kelas_melinda" required><br><br>
+
+    Jurusan <br>
+    <input type="text" name="jurusan_melinda" required><br><br>
+
+    Username Login <br>
+    <select name="id_user_melinda" required>
+        <option value="">-- Pilih User --</option>
+        <?php
+        $user = mysqli_query($koneksi_melinda,
+            "SELECT id_user_melinda, username_melinda 
+             FROM user_melinda 
+             WHERE role_melinda='user'"
+        );
+        while ($u = mysqli_fetch_assoc($user)) {
+            echo "<option value='{$u['id_user_melinda']}'>
+                    {$u['username_melinda']}
+                  </option>";
+        }
+        ?>
+    </select>
     <br><br>
-    <form action="">
-        ID Anggota <br>
-        <input type="text" name="id_anggota_melinda" required><br><br>
 
-        NIS <br>
-        <input type="text" name="nis_melinda" required><br><br>
-
-        Nama Anggota <br>
-        <input type="text" name="nama_anggota_melinda" required><br><br>
-
-        Kelas <br>
-        <input type="text" name="kelas_melinda" required><br><br>
-
-        Jurusan <br>
-        <input type="text" name="jurusan_melinda" required><br><br>
-
-        <button type="submit" name="simpan_melinda">Simpan</button>
-    </form>
+    <button type="submit" name="simpan_melinda">Simpan</button>
+</form>
 </body>
 </html>
