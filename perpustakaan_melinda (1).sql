@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2026 at 02:58 AM
+-- Generation Time: Jan 21, 2026 at 03:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,7 +40,7 @@ CREATE TABLE `anggota_melinda` (
 --
 
 INSERT INTO `anggota_melinda` (`id_anggota_melinda`, `nis_melinda`, `nama_anggota_melinda`, `kelas_melinda`, `jurusan_melinda`) VALUES
-(1, '102306419', '', '12 rpl', NULL);
+(1, '102306419', 'melinda', '12 ', 'rpl');
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,7 @@ CREATE TABLE `buku_melinda` (
   `pengarang_melinda` varchar(100) DEFAULT NULL,
   `penerbit_melinda` varchar(100) DEFAULT NULL,
   `tahun_terbit_melinda` year(4) DEFAULT NULL,
+  `kategori_buku_melinda` enum('Novel','Komik','Dongeng','Buku Paket','Biografi','Majalah','Karya Ilmiah','Buku Digital','Fotografi','Cergam') NOT NULL,
   `stok_melinda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -61,8 +62,8 @@ CREATE TABLE `buku_melinda` (
 -- Dumping data for table `buku_melinda`
 --
 
-INSERT INTO `buku_melinda` (`id_buku_melinda`, `judul_buku_melinda`, `pengarang_melinda`, `penerbit_melinda`, `tahun_terbit_melinda`, `stok_melinda`) VALUES
-(2, 'tutorial php', 'gtw', 'gtw', '2005', 126);
+INSERT INTO `buku_melinda` (`id_buku_melinda`, `judul_buku_melinda`, `pengarang_melinda`, `penerbit_melinda`, `tahun_terbit_melinda`, `kategori_buku_melinda`, `stok_melinda`) VALUES
+(2, 'tutorial php', 'gtw', 'gtw', '2005', 'Novel', 126);
 
 -- --------------------------------------------------------
 
