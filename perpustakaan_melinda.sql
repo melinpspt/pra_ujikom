@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2026 at 02:15 AM
+-- Generation Time: Jan 21, 2026 at 02:58 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,6 +35,13 @@ CREATE TABLE `anggota_melinda` (
   `jurusan_melinda` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `anggota_melinda`
+--
+
+INSERT INTO `anggota_melinda` (`id_anggota_melinda`, `nis_melinda`, `nama_anggota_melinda`, `kelas_melinda`, `jurusan_melinda`) VALUES
+(1, '102306419', '', '12 rpl', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +56,13 @@ CREATE TABLE `buku_melinda` (
   `tahun_terbit_melinda` year(4) DEFAULT NULL,
   `stok_melinda` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `buku_melinda`
+--
+
+INSERT INTO `buku_melinda` (`id_buku_melinda`, `judul_buku_melinda`, `pengarang_melinda`, `penerbit_melinda`, `tahun_terbit_melinda`, `stok_melinda`) VALUES
+(2, 'tutorial php', 'gtw', 'gtw', '2005', 126);
 
 -- --------------------------------------------------------
 
@@ -77,6 +91,14 @@ CREATE TABLE `user_melinda` (
   `password_melinda` varchar(255) DEFAULT NULL,
   `role_melinda` enum('admin','user') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_melinda`
+--
+
+INSERT INTO `user_melinda` (`id_user_melinda`, `username_melinda`, `password_melinda`, `role_melinda`) VALUES
+(1, 'mel', '202cb962ac59075b964b07152d234b70', 'user'),
+(2, 'min', '202cb962ac59075b964b07152d234b70', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -116,13 +138,13 @@ ALTER TABLE `user_melinda`
 -- AUTO_INCREMENT for table `anggota_melinda`
 --
 ALTER TABLE `anggota_melinda`
-  MODIFY `id_anggota_melinda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_anggota_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `buku_melinda`
 --
 ALTER TABLE `buku_melinda`
-  MODIFY `id_buku_melinda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_buku_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `peminjaman_melinda`
@@ -134,7 +156,7 @@ ALTER TABLE `peminjaman_melinda`
 -- AUTO_INCREMENT for table `user_melinda`
 --
 ALTER TABLE `user_melinda`
-  MODIFY `id_user_melinda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
