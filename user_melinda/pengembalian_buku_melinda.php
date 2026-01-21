@@ -5,12 +5,42 @@ if ($_SESSION['role_melinda'] != 'user') {
     header("location:../auth_melinda/login_melinda.php");
 }
 
-// ambil anggota
-$user_melinda = $_SESSION['username_melinda'];
-$anggota_melinda = mysqli_fetch_assoc(
-    mysqli_query($koneksi_melinda,
-    "SELECT * FROM anggota_melinda WHERE nama_anggota_melinda='$user_melinda'")
-);
+$username_melinda = $_SESSION['username_melinda'];
+
+$user_melinda = mysqli_fetch_assoc(mysqli_query(
+    $koneksi_melinda,
+    "SELECT id_user_melinda FROM user_melinda 
+     WHERE username_melinda='$username_melinda'"$username_melinda = $_SESSION['username_melinda'];
+
+$user_melinda = mysqli_fetch_assoc(mysqli_query(
+    $koneksi_melinda,
+    "SELECT id_user_melinda FROM user_melinda 
+     WHERE username_melinda='$username_melinda'"
+));
+
+$anggota_melinda = mysqli_fetch_assoc(mysqli_query(
+    $koneksi_melinda,
+    "SELECT * FROM anggota_melinda 
+     WHERE id_user_melinda='{$user_melinda['id_user_melinda']}'"
+));
+
+if (!$anggota_melinda) {
+    die("Data anggota tidak ditemukan");
+}
+
+$id_anggota_melinda = $anggota_melinda['id_anggota_melinda'];
+));
+
+$anggota_melinda = mysqli_fetch_assoc(mysqli_query(
+    $koneksi_melinda,
+    "SELECT * FROM anggota_melinda 
+     WHERE id_user_melinda='{$user_melinda['id_user_melinda']}'"
+));
+
+if (!$anggota_melinda) {
+    die("Data anggota tidak ditemukan");
+}
+
 $id_anggota_melinda = $anggota_melinda['id_anggota_melinda'];
 
 // proses pengembalian
