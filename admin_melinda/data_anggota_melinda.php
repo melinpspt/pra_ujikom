@@ -24,7 +24,7 @@ if ($_SESSION['role_melinda'] != 'admin') {
 
 <h2>Data Anggota</h2>
 
-<a href="tambah_user_melinda.php">+ Tambah Anggota</a>
+<a href="tambah_anggota_melinda.php">+ Tambah Anggota</a>
 <br><br>
 
 <table border="1" cellpadding="5">
@@ -66,10 +66,10 @@ while ($data_melinda = mysqli_fetch_assoc($query_melinda)) {
     <td><?= $data_melinda['kelas_melinda']; ?></td>
     <td><?= $data_melinda['jurusan_melinda']; ?></td>
     <td>
-    <a href="edit_user_melinda.php?id_anggota=<?= $data_melinda['id_anggota_melinda']; ?>&id_user=<?= $data_melinda['id_user_melinda']; ?>">
+    <a href="edit_anggota_melinda.php?id_anggota=<?= $data_melinda['id_anggota_melinda']; ?>&id_user=<?= $data_melinda['id_user_melinda']; ?>">
         Edit
     </a> |
-    <a href="hapus_user_melinda.php?id_anggota=<?= $data_melinda['id_anggota_melinda']; ?>&id_user=<?= $data_melinda['id_user_melinda']; ?>"
+    <a href="hapus_anggota_melinda.php?id_anggota=<?= $data_melinda['id_anggota_melinda']; ?>&id_user=<?= $data_melinda['id_user_melinda']; ?>"
        onclick="return confirm('Hapus data?')">
         Hapus
     </a>

@@ -12,6 +12,8 @@ include "../config_melinda/koneksi_melinda.php";
 
 <body>
     <h2>Data Peminjaman</h2>
+    <a href="tambah_transaksi_melinda.php">+ Tambah Transaksi</a>
+    <br><br>
 
     <table border="1" cellpadding="5">
         <tr>
@@ -44,4 +46,5 @@ include "../config_melinda/koneksi_melinda.php";
         <?php } ?>
     </table>
 </body>
+
 </html>

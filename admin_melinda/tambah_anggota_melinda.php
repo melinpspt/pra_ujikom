@@ -7,14 +7,17 @@ if ($_SESSION['role_melinda'] != 'admin') {
     exit;
 }
 
-
 if (isset($_POST['simpan_melinda'])) {
 
     $username_melinda = $_POST['username_melinda'];
     $password_melinda = md5($_POST['password_melinda']);
-    $role_melinda     = $_POST['role_melinda'];
+    $role_melinda     = 'user'; // khusus siswa
 
-    // cek username 
+    $nis_melinda          = $_POST['nis_melinda'];
+    $nama_anggota_melinda = $_POST['nama_anggota_melinda'];
+    $kelas_melinda        = $_POST['kelas_melinda'];
+    $jurusan_melinda      = $_POST['jurusan_melinda'];
+
     $cek_melinda = mysqli_query(
         $koneksi_melinda,
         "SELECT * FROM user_melinda 
@@ -29,24 +32,31 @@ if (isset($_POST['simpan_melinda'])) {
         exit;
     }
 
-    // simpan user
     mysqli_query($koneksi_melinda, "
         INSERT INTO user_melinda
-        (username_melinda, password_melinda)
+        (username_melinda, password_melinda, role_melinda)
         VALUES
-        ('$username_melinda', '$password_melinda')
+        ('$username_melinda', '$password_melinda', '$role_melinda')
     ");
+
+    $id_user_melinda = mysqli_insert_id($koneksi_melinda);
 
     mysqli_query($koneksi_melinda, "
         INSERT INTO anggota_melinda
-        (nis_melinda, nama_anggota_melinda, kelas_melinda, jurusan_melinda)
+        (id_user_melinda, nis_melinda, nama_anggota_melinda, kelas_melinda, jurusan_melinda)
         VALUES
-        ('$nis_melinda', '$nama_anggota_melinda', '$kelas_melinda', '$jurusan_melinda')
+        (
+            '$id_user_melinda',
+            '$nis_melinda',
+            '$nama_anggota_melinda',
+            '$kelas_melinda',
+            '$jurusan_melinda'
+        )
     ");
 
     echo "<script>
-        alert('User berhasil ditambahkan');
-        window.location='data_user_melinda.php';
+        alert('Data siswa berhasil ditambahkan');
+        window.location='data_anggota_melinda.php';
     </script>";
 }
 ?>

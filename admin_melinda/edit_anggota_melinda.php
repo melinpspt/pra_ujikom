@@ -99,7 +99,6 @@ if (isset($_POST['update_melinda'])) {
         Role <br>
         <select name="role_melinda">
             <option value="user" <?= $data['role_melinda'] == 'user' ? 'selected' : ''; ?>>User</option>
-            <option value="admin" <?= $data['role_melinda'] == 'admin' ? 'selected' : ''; ?>>Admin</option>
         </select><br><br>
 
         <button type="button" onclick="togglePassword()">Reset Password</button>
