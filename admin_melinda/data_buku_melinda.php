@@ -57,6 +57,7 @@ if ($_SESSION['role_melinda'] != 'admin') {
                 <td><?= $data_melinda['pengarang_melinda']; ?></td>
                 <td><?= $data_melinda['penerbit_melinda']; ?></td>
                 <td><?= $data_melinda['tahun_terbit_melinda']; ?></td>
+                <td><?= $data_melinda['kategori_buku_melinda']; ?></td>
                 <td><?= $data_melinda['stok_melinda']; ?></td>
                 <td>
                     <a href="edit_buku_melinda.php?id=<?= $data_melinda['id_buku_melinda']; ?>">Edit</a> |

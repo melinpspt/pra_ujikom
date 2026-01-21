@@ -12,7 +12,7 @@ if (isset($_POST['update_melinda'])) {
         pengarang_melinda='$_POST[pengarang_melinda]',
         penerbit_melinda='$_POST[penerbit_melinda]',
         tahun_terbit_melinda='$_POST[tahun_terbit_melinda]',
-        kategori_melinda='$_POST[kategori_melinda]',
+        kategori_melinda='$_POST[kategori_buku_melinda]',
         stok_melinda='$_POST[stok_melinda]'
         WHERE id_buku_melinda='$id_melinda'
     ");

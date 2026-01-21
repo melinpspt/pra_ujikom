@@ -8,7 +8,7 @@ if (isset($_POST['simpan_melinda'])) {
         '$_POST[pengarang_melinda]',
         '$_POST[penerbit_melinda]',
         '$_POST[tahun_terbit_melinda]',
-        '$_POST[kategori_melinda]',
+        '$_POST[kategori_buku_melinda]',
         '$_POST[stok_melinda]'
     )");
     header("location:data_buku_melinda.php");
