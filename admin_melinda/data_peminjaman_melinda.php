@@ -18,11 +18,12 @@ include "../config_melinda/koneksi_melinda.php";
     <table border="1" cellpadding="5">
         <tr>
             <th>No</th>
-            <th>Nama Anggota</th>
+            <th>Nama Siswa</th>
             <th>Judul Buku</th>
             <th>Tanggal Pinjam</th>
             <th>Tanggal Kembali</th>
             <th>Status</th>
+            <th>aksi</th>
         </tr>
 
         <?php
@@ -42,6 +43,10 @@ include "../config_melinda/koneksi_melinda.php";
                 <td><?= $data_melinda['tanggal_pinjam_melinda']; ?></td>
                 <td><?= $data_melinda['tanggal_kembali_melinda']; ?></td>
                 <td><?= $data_melinda['status_melinda']; ?></td>
+                <td><a href="edit_transaksi_melinda.php?id=<?= $data_melinda['id_peminjaman_melinda'];?>">Edit</a>
+                    |<a href="hapus_transaksi_melinda.php?id=<?= $data_melinda['id_peminjaman_melinda']; ?>"
+                        onclick="return confirm('Hapus data?')">Hapus</a>
+            </td>
             </tr>
         <?php } ?>
     </table>
