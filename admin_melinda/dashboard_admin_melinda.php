@@ -16,9 +16,9 @@ if ($_SESSION['role_melinda'] != 'admin') {
 <p>Selamat datang, <b><?= $_SESSION['username_melinda']; ?></b></p>
 
 <ul>
-    <li><a href="data_buku_melinda.php">Data Buku</a></li>
-    <li><a href="data_anggota_melinda.php">Data Anggota</a></li>
-    <li><a href="data_peminjaman_melinda.php">Data Peminjaman</a></li>
+    <li><a href="data_buku_melinda.php">Kelola Data Buku</a></li>
+    <li><a href="data_peminjaman_melinda.php">Transaksi</a></li>
+    <li><a href="data_anggota_melinda.php">Kelola Anggota</a></li>
     <li><a href="../auth_melinda/logout_melinda.php">Logout</a></li>
 </ul>
 

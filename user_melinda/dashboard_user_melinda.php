@@ -16,7 +16,7 @@ if ($_SESSION['role_melinda'] != 'user') {
 <p>Selamat datang, <b><?= $_SESSION['username_melinda']; ?></b></p>
 
 <ul>
-    <li><a href="pinjam_buku_melinda.php">Pinjam Buku</a></li>
+    <li><a href="pinjam_buku_melinda.php">Peminjaman Buku</a></li>
     <li><a href="pengembalian_buku_melinda.php">Pengembalian Buku</a></li>
     <li><a href="../auth_melinda/logout_melinda.php">Logout</a></li>
 </ul>

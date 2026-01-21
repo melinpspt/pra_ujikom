@@ -10,11 +10,6 @@ $username_melinda = $_SESSION['username_melinda'];
 $user_melinda = mysqli_fetch_assoc(mysqli_query(
     $koneksi_melinda,
     "SELECT id_user_melinda FROM user_melinda 
-     WHERE username_melinda='$username_melinda'"$username_melinda = $_SESSION['username_melinda'];
-
-$user_melinda = mysqli_fetch_assoc(mysqli_query(
-    $koneksi_melinda,
-    "SELECT id_user_melinda FROM user_melinda 
      WHERE username_melinda='$username_melinda'"
 ));
 
@@ -29,7 +24,7 @@ if (!$anggota_melinda) {
 }
 
 $id_anggota_melinda = $anggota_melinda['id_anggota_melinda'];
-));
+
 
 $anggota_melinda = mysqli_fetch_assoc(mysqli_query(
     $koneksi_melinda,
