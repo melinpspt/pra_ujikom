@@ -7,6 +7,7 @@ if ($_SESSION['role_melinda'] != 'admin') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,6 +44,7 @@ if ($_SESSION['role_melinda'] != 'admin') {
             <th>Penerbit</th>
             <th>Tahun</th>
             <th>Kategori Buku</th>
+            <th>Status</th>
             <th>Stok</th>
             <th>Aksi</th>
         </tr>
@@ -58,12 +60,32 @@ if ($_SESSION['role_melinda'] != 'admin') {
                 <td><?= $data_melinda['penerbit_melinda']; ?></td>
                 <td><?= $data_melinda['tahun_terbit_melinda']; ?></td>
                 <td><?= $data_melinda['kategori_buku_melinda']; ?></td>
+                <td>
+                    <?php
+                    if ($data_melinda['status_buku_melinda'] == 'Baru') {
+                        echo "<span style='color:green;'>BARU</span>";
+                    } else {
+                        echo "<span style='color:red;'>RUSAK</span>";
+                    }
+                    ?>
+                </td>
                 <td><?= $data_melinda['stok_melinda']; ?></td>
                 <td>
                     <a href="edit_buku_melinda.php?id=<?= $data_melinda['id_buku_melinda']; ?>">Edit</a> |
-                    <a href="hapus_buku_melinda.php?id=<?= $data_melinda['id_buku_melinda']; ?>"
-                        onclick="return confirm('Hapus data?')">Hapus</a>
+
+                    <?php if ($data_melinda['status_buku_melinda'] == 'Baru') { ?>
+                        <a href="ubah_status_buku_melinda.php?id=<?= $data_melinda['id_buku_melinda']; ?>&status=rusak"
+                            onclick="return confirm('Ubah status buku menjadi RUSAK?')">
+                            Tandai Rusak
+                        </a>
+                    <?php } else { ?>
+                        <a href="ubah_status_buku_melinda.php?id=<?= $data_melinda['id_buku_melinda']; ?>&status=baru"
+                            onclick="return confirm('Ubah status buku menjadi BARU?')">
+                            Tandai Baru
+                        </a>
+                    <?php } ?>
                 </td>
+
             </tr>
         <?php } ?>
     </table>

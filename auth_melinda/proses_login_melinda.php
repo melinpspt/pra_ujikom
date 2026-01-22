@@ -5,17 +5,36 @@ include "../config_melinda/koneksi_melinda.php";
 $username_melinda = $_POST['username_melinda'];
 $password_melinda = md5($_POST['password_melinda']);
 
-$query_melinda = mysqli_query(
-    $koneksi_melinda,
-    "SELECT * FROM user_melinda 
-     WHERE username_melinda='$username_melinda' 
-     AND password_melinda='$password_melinda'"
-);
+$query_melinda = mysqli_query($koneksi_melinda, "
+    SELECT 
+        u.id_user_melinda,
+        u.username_melinda,
+        u.role_melinda,
+        a.status_verifikasi
+    FROM user_melinda u
+    LEFT JOIN anggota_melinda a 
+        ON u.id_user_melinda = a.id_user_melinda
+    WHERE u.username_melinda='$username_melinda'
+      AND u.password_melinda='$password_melinda'
+");
 
-$data_melinda = mysqli_fetch_assoc($query_melinda);
 $cek_melinda = mysqli_num_rows($query_melinda);
 
 if ($cek_melinda > 0) {
+
+    $data_melinda = mysqli_fetch_assoc($query_melinda);
+
+ //cek verif
+    if ($data_melinda['role_melinda'] == 'user' &&
+        $data_melinda['status_verifikasi'] == 'pending') {
+
+        echo "<script>
+            alert('Akun belum diverifikasi admin');
+            window.location='login_melinda.php';
+        </script>";
+        exit;
+    }
+
     $_SESSION['id_user_melinda'] = $data_melinda['id_user_melinda'];
     $_SESSION['username_melinda'] = $data_melinda['username_melinda'];
     $_SESSION['role_melinda'] = $data_melinda['role_melinda'];

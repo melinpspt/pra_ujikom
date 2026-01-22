@@ -2,21 +2,35 @@
 include "../config_melinda/koneksi_melinda.php";
 
 if (isset($_POST['simpan_melinda'])) {
-    mysqli_query($koneksi_melinda, "INSERT INTO buku_melinda VALUES (
-        '',
-        '$_POST[judul_buku_melinda]',
-        '$_POST[pengarang_melinda]',
-        '$_POST[penerbit_melinda]',
-        '$_POST[tahun_terbit_melinda]',
-        '$_POST[kategori_buku_melinda]',
-        '$_POST[stok_melinda]'
-    )");
+
+    mysqli_query($koneksi_melinda, "
+        INSERT INTO buku_melinda 
+        (
+            judul_buku_melinda,
+            pengarang_melinda,
+            penerbit_melinda,
+            tahun_terbit_melinda,
+            kategori_buku_melinda,
+            stok_melinda
+        )
+        VALUES
+        (
+            '$_POST[judul_buku_melinda]',
+            '$_POST[pengarang_melinda]',
+            '$_POST[penerbit_melinda]',
+            '$_POST[tahun_terbit_melinda]',
+            '$_POST[kategori_buku_melinda]',
+            '$_POST[stok_melinda]'
+        )
+    ");
+
     header("location:data_buku_melinda.php");
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +67,9 @@ if (isset($_POST['simpan_melinda'])) {
             <option value="Fotografi">Fotografi</option>
             <option value="Cergam">Cergam</option>
         </select>
+        <br><br>
+        Status Buku <br>
+        <input type="text" name="status_buku_melinda" value="Baru" readonly>
         <br><br>
         Stok <br>
         <input type="number" name="stok_melinda" required><br><br>

@@ -19,9 +19,6 @@ if (mysqli_num_rows($cek_melinda) > 0) {
     exit;
 }
 
-/* ===============================
-   SIMPAN USER
-================================ */
 mysqli_query($koneksi_melinda,
     "INSERT INTO user_melinda
     (username_melinda,password_melinda,role_melinda)
@@ -29,18 +26,17 @@ mysqli_query($koneksi_melinda,
     ('$username_melinda','$password_melinda','$role_melinda')"
 );
 
-/* ambil ID user yang BARU dibuat */
+
 $id_user_melinda = mysqli_insert_id($koneksi_melinda);
 
-/* ===============================
-   SIMPAN ANGGOTA (TERHUBUNG USER)
-================================ */
+
 mysqli_query($koneksi_melinda,
     "INSERT INTO anggota_melinda
-    (nis_melinda,nama_anggota_melinda,kelas_melinda,jurusan_melinda,id_user_melinda)
+    (nis_melinda,nama_anggota_melinda,kelas_melinda,jurusan_melinda,id_user_melinda,status_verifikasi)
     VALUES
-    ('$nis_melinda','$nama_melinda','$kelas_melinda','$jurusan_melinda','$id_user_melinda')"
+    ('$nis_melinda','$nama_melinda','$kelas_melinda','$jurusan_melinda','$id_user_melinda','pending')"
 );
+
 
 echo "<script>
     alert('Registrasi berhasil, silakan login');
