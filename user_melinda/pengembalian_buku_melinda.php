@@ -71,6 +71,7 @@ if (isset($_GET['kembali'])) {
     <th>No</th>
     <th>Judul Buku</th>
     <th>Tanggal Pinjam</th>
+    <th></th>
     <th>Aksi</th>
 </tr>
 

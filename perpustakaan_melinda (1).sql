@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2026 at 02:53 AM
+-- Generation Time: Jan 22, 2026 at 05:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -34,7 +34,7 @@ CREATE TABLE `anggota_melinda` (
   `nama_anggota_melinda` varchar(100) DEFAULT NULL,
   `kelas_melinda` varchar(20) DEFAULT NULL,
   `jurusan_melinda` varchar(50) NOT NULL,
-  `status_verifikasi` enum('pending','aktif','expired','noaktif') DEFAULT 'pending'
+  `status_verifikasi` enum('pending','aktif','expired','nonaktif') DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -43,8 +43,9 @@ CREATE TABLE `anggota_melinda` (
 
 INSERT INTO `anggota_melinda` (`id_anggota_melinda`, `id_user_melinda`, `nis_melinda`, `nama_anggota_melinda`, `kelas_melinda`, `jurusan_melinda`, `status_verifikasi`) VALUES
 (1, 1, '102306419', 'melinda puspita', '10', 'rpl', 'aktif'),
-(4, 5, '102306422', 'siswi cewe', '12', 'mekatronika', 'aktif'),
-(6, 7, '1', 'a', '1', 'mesin', 'pending');
+(4, 5, '102306422', 'siswi cewe', '12', 'mekatronika', 'nonaktif'),
+(6, 7, '1', 'a', '1', 'mesin', 'pending'),
+(7, 8, '2', 'jiyas', '2', 'mesin', 'aktif');
 
 -- --------------------------------------------------------
 
@@ -68,9 +69,9 @@ CREATE TABLE `buku_melinda` (
 --
 
 INSERT INTO `buku_melinda` (`id_buku_melinda`, `judul_buku_melinda`, `pengarang_melinda`, `penerbit_melinda`, `tahun_terbit_melinda`, `kategori_buku_melinda`, `stok_melinda`, `status_buku_melinda`) VALUES
-(2, 'tutorial php', 'gtw', 'gtw', '2005', 'Novel', 124, 'Baru'),
-(4, 'one piece', 'gtw', 'gtw', '2006', 'Komik', 244, 'Baru'),
-(7, 'ancika', 'gatau', 'gatau', '2000', 'Novel', 245, 'Baru');
+(2, 'tutorial php', 'gtw', 'gtw', '2005', 'Novel', 125, 'Baru'),
+(4, 'one piece', 'gtw', 'gtw', '2006', 'Komik', 243, 'Baru'),
+(7, 'ancika', 'gatau', 'gatau', '2000', 'Novel', 244, 'Baru');
 
 -- --------------------------------------------------------
 
@@ -92,14 +93,10 @@ CREATE TABLE `peminjaman_melinda` (
 --
 
 INSERT INTO `peminjaman_melinda` (`id_peminjaman_melinda`, `id_buku_melinda`, `tanggal_pinjam_melinda`, `tanggal_kembali_melinda`, `status_melinda`, `id_anggota_melinda`) VALUES
-(5, 2, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
-(6, 2, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
-(7, 2, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
-(8, 4, '2026-01-21', NULL, 'dipinjam', 1),
-(9, 4, '2026-01-21', '2026-01-21', 'dikembalikan', 1),
-(10, 2, '2026-01-21', NULL, 'dipinjam', 1),
-(11, 4, '2026-01-21', NULL, 'dipinjam', 4),
-(12, 2, '2026-01-22', '0000-00-00', '', 4);
+(14, 4, '2026-01-24', '2026-01-22', 'dibatalkan', 4),
+(15, 4, '2026-01-22', '2026-01-27', 'dikembalikan', 1),
+(16, 7, '2026-01-22', NULL, 'dibatalkan', 1),
+(17, 4, '2026-01-22', '2026-01-22', 'dipinjam', 1);
 
 -- --------------------------------------------------------
 
@@ -123,7 +120,8 @@ INSERT INTO `user_melinda` (`id_user_melinda`, `username_melinda`, `password_mel
 (2, 'min', '202cb962ac59075b964b07152d234b70', 'admin'),
 (5, 'siswi', 'b44f4e457859949b3c4b9c5b0405b6a8', 'user'),
 (6, 'coba', 'c3ec0f7b054e729c5a716c8125839829', 'user'),
-(7, 'a', '0cc175b9c0f1b6a831c399e269772661', 'user');
+(7, 'a', '0cc175b9c0f1b6a831c399e269772661', 'user'),
+(8, 'jiyas', '202cb962ac59075b964b07152d234b70', 'user');
 
 --
 -- Indexes for dumped tables
@@ -164,7 +162,7 @@ ALTER TABLE `user_melinda`
 -- AUTO_INCREMENT for table `anggota_melinda`
 --
 ALTER TABLE `anggota_melinda`
-  MODIFY `id_anggota_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_anggota_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `buku_melinda`
@@ -176,13 +174,13 @@ ALTER TABLE `buku_melinda`
 -- AUTO_INCREMENT for table `peminjaman_melinda`
 --
 ALTER TABLE `peminjaman_melinda`
-  MODIFY `id_peminjaman_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_peminjaman_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `user_melinda`
 --
 ALTER TABLE `user_melinda`
-  MODIFY `id_user_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

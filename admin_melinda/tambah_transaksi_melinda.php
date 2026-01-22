@@ -12,7 +12,7 @@ if (isset($_POST["simpan_melinda"])) {
     $id_buku_melinda    = $_POST['id_buku_melinda'];
     $tanggal_pinjam_melinda = $_POST['tanggal_pinjam_melinda'];
     $tanggal_kembali_melinda = $_POST['tanggal_kembali_melinda'];
-    $status_melinda = 'pinjam';
+    $status_melinda = 'dipinjam';
 
     mysqli_query($koneksi_melinda, "
         INSERT INTO peminjaman_melinda

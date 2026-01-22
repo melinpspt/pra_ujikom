@@ -18,21 +18,26 @@ $query_melinda = mysqli_query($koneksi_melinda, "
       AND u.password_melinda='$password_melinda'
 ");
 
-$cek_melinda = mysqli_num_rows($query_melinda);
-
-if ($cek_melinda > 0) {
+if (mysqli_num_rows($query_melinda) > 0) {
 
     $data_melinda = mysqli_fetch_assoc($query_melinda);
 
- //cek verif
-    if ($data_melinda['role_melinda'] == 'user' &&
-        $data_melinda['status_verifikasi'] == 'pending') {
+    if ($data_melinda['role_melinda'] == 'user') {
 
-        echo "<script>
-            alert('Akun belum diverifikasi admin');
-            window.location='login_melinda.php';
-        </script>";
-        exit;
+        if ($data_melinda['status_verifikasi'] == 'pending') {
+            echo "<script>alert('Akun belum diverifikasi admin');window.location='login_melinda.php';</script>";
+            exit;
+        }
+
+        if ($data_melinda['status_verifikasi'] == 'nonaktif') {
+            echo "<script>alert('Akun anda sedang dinonaktifkan sementara');window.location='login_melinda.php';</script>";
+            exit;
+        }
+
+        if ($data_melinda['status_verifikasi'] == 'expired') {
+            echo "<script>alert('Akun sudah tidak aktif');window.location='login_melinda.php';</script>";
+            exit;
+        }
     }
 
     $_SESSION['id_user_melinda'] = $data_melinda['id_user_melinda'];
@@ -46,9 +51,6 @@ if ($cek_melinda > 0) {
     }
 
 } else {
-    echo "<script>
-        alert('Username atau Password salah');
-        window.location='login_melinda.php';
-    </script>";
+    echo "<script>alert('Username atau Password salah');window.location='login_melinda.php';</script>";
 }
 ?>
