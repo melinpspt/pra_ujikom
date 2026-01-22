@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2026 at 05:55 AM
+-- Generation Time: Jan 22, 2026 at 07:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,7 +69,7 @@ CREATE TABLE `buku_melinda` (
 --
 
 INSERT INTO `buku_melinda` (`id_buku_melinda`, `judul_buku_melinda`, `pengarang_melinda`, `penerbit_melinda`, `tahun_terbit_melinda`, `kategori_buku_melinda`, `stok_melinda`, `status_buku_melinda`) VALUES
-(2, 'tutorial php', 'gtw', 'gtw', '2005', 'Novel', 125, 'Baru'),
+(2, 'tutorial php', 'gtw', 'gtw', '2005', 'Novel', 124, 'Baru'),
 (4, 'one piece', 'gtw', 'gtw', '2006', 'Komik', 243, 'Baru'),
 (7, 'ancika', 'gatau', 'gatau', '2000', 'Novel', 244, 'Baru');
 
@@ -85,6 +85,7 @@ CREATE TABLE `peminjaman_melinda` (
   `tanggal_pinjam_melinda` date DEFAULT NULL,
   `tanggal_kembali_melinda` date DEFAULT NULL,
   `status_melinda` enum('dipinjam','dikembalikan','dibatalkan','') DEFAULT NULL,
+  `tenggat_waktu_melinda` enum('1 minggu','2 minggu','3 minggu') NOT NULL,
   `id_anggota_melinda` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -92,11 +93,12 @@ CREATE TABLE `peminjaman_melinda` (
 -- Dumping data for table `peminjaman_melinda`
 --
 
-INSERT INTO `peminjaman_melinda` (`id_peminjaman_melinda`, `id_buku_melinda`, `tanggal_pinjam_melinda`, `tanggal_kembali_melinda`, `status_melinda`, `id_anggota_melinda`) VALUES
-(14, 4, '2026-01-24', '2026-01-22', 'dibatalkan', 4),
-(15, 4, '2026-01-22', '2026-01-27', 'dikembalikan', 1),
-(16, 7, '2026-01-22', NULL, 'dibatalkan', 1),
-(17, 4, '2026-01-22', '2026-01-22', 'dipinjam', 1);
+INSERT INTO `peminjaman_melinda` (`id_peminjaman_melinda`, `id_buku_melinda`, `tanggal_pinjam_melinda`, `tanggal_kembali_melinda`, `status_melinda`, `tenggat_waktu_melinda`, `id_anggota_melinda`) VALUES
+(14, 4, '2026-01-24', '2026-01-22', 'dibatalkan', '1 minggu', 4),
+(15, 4, '2026-01-22', '2026-01-27', 'dikembalikan', '1 minggu', 1),
+(16, 7, '2026-01-22', '2026-01-22', 'dibatalkan', '1 minggu', 1),
+(17, 4, '2026-01-22', '2026-01-22', 'dipinjam', '1 minggu', 1),
+(18, 2, '2026-01-22', NULL, 'dipinjam', '1 minggu', 1);
 
 -- --------------------------------------------------------
 
@@ -174,7 +176,7 @@ ALTER TABLE `buku_melinda`
 -- AUTO_INCREMENT for table `peminjaman_melinda`
 --
 ALTER TABLE `peminjaman_melinda`
-  MODIFY `id_peminjaman_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_peminjaman_melinda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_melinda`
